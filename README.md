@@ -9,6 +9,7 @@ A 65-second video introduction for nursing job applications.
 - `index.html` is the web page employers see. It shows my name, my nursing roles, the video player, and links to my LinkedIn and business card.
 - `video-resume.mp4` is the video itself (square, 960 x 960, about 65 seconds).
 - `poster.jpg` is the still image shown before the video starts playing.
+- `favicon.svg`, `favicon.ico` and `apple-touch-icon.png` are the blue "RN" icon shown in the browser tab and on phone home screens.
 
 ## How it works
 
