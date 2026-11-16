@@ -6,13 +6,18 @@ A 65-second video introduction for nursing job applications.
 
 ## What's in this repo
 
-- `index.html` is the web page employers see. It shows my name, my nursing roles, the video player, and links to my LinkedIn and business card.
-- `video-resume.mp4` is the video itself (square, 960 x 960, about 65 seconds).
-- `poster.jpg` is the still image shown before the video starts playing.
-- `favicon.svg`, `favicon.ico` and `apple-touch-icon.png` are the blue "RN" icon shown in the browser tab and on phone home screens.
+- `index.html` is the web page employers see: my name and nursing roles, the video player with captions, my licences and certifications, a short work history, a written transcript, and links to my LinkedIn and business card. It also holds link preview tags (so the link shows my photo and title when shared) and schema.org "Person" details for search engines.
+- `video-resume.mp4` is the video (square, 720 x 720, about 65 seconds, about 6 MB so it loads fast on phones).
+- `captions.vtt` is the caption file the player shows on top of the video. It was made from my recording with Whisper and checked by hand.
+- `poster.jpg` is the still image shown before the video plays.
+- `share.jpg` is the wider image used when the link is shared on LinkedIn, email or text.
+- `favicon.svg`, `favicon.ico` and `apple-touch-icon.png` are the blue "RN" icon for browser tabs and phone home screens.
 
 ## How it works
 
-GitHub Pages serves this repo as a website from the `main` branch. When someone opens the link above, their browser loads `index.html`, which plays `video-resume.mp4`. There's no other code, server, or database.
+GitHub Pages serves this repo as a website from the `main` branch. When someone opens the link, their browser loads `index.html`, which plays `video-resume.mp4` with `captions.vtt`. There's no other code, server, or database.
 
-To change the video, replace `video-resume.mp4` with a new file that has the same name.
+## Updating it
+
+- New video: replace `video-resume.mp4` (keep the name), then make a new `captions.vtt` and update the transcript in `index.html` so all three match.
+- Dates and credentials on the page come from my master resume (JoAnne_Gomez_RN_UHN_PACU_Resume). Change them there first, then here.
