@@ -20,4 +20,5 @@ GitHub Pages serves this repo as a website from the `main` branch. When someone 
 ## Updating it
 
 - New video: replace `video-resume.mp4` (keep the name), then make a new `captions.vtt` and update the transcript in `index.html` so all three match.
+- After replacing the video, captions or cover image, raise the `?v=` number on those file names in `index.html` (for example `?v=3` to `?v=4`). Phones that saw the page before keep saved pieces of the old file, and mixing old and new pieces can make the picture lag behind the sound. A new number makes every phone fetch the new file.
 - Dates and credentials on the page come from my master resume (JoAnne_Gomez_RN_UHN_PACU_Resume). Change them there first, then here.
