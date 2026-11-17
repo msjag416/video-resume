@@ -132,6 +132,29 @@
         v.addEventListener('play', captionsOn, { once: true });
       })();
     </script>
+    <p id="diag" style="text-align:center;font-size:15px;font-weight:700;color:#0b4f7a;margin:10px 0 0;"></p>
+    <script>
+      // Test only: measures how long after the sound starts the first picture appears.
+      (function () {
+        var v = document.querySelector('video'), d = document.getElementById('diag');
+        var m = navigator.userAgent.match(/OS (\d+)_(\d+)/), s = navigator.userAgent.match(/Version\/([\d.]+)/);
+        var dev = (m ? 'iOS ' + m[1] + '.' + m[2] : '') + (s ? ' | Safari ' + s[1] : '');
+        d.textContent = dev + ' | press play';
+        var t0 = null, done = false;
+        v.addEventListener('playing', function () {
+          if (t0 !== null) return;
+          t0 = performance.now();
+          d.textContent = dev + ' | sound started, waiting for picture...';
+          if (v.requestVideoFrameCallback) {
+            v.requestVideoFrameCallback(function (now, meta) {
+              done = true;
+              d.textContent = dev + ' | picture started ' + Math.max(0, (now - t0) / 1000).toFixed(1) +
+                ' s after sound (at ' + meta.mediaTime.toFixed(1) + ' s of the video)';
+            });
+          } else { d.textContent = dev + ' | this phone cannot measure it'; }
+        });
+      })();
+    </script>
     <p class="hint">Captions are on. You can turn them off from the player's captions or menu button.</p>
 
     <h2>Licensure and certifications</h2>

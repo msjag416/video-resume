@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Test 2: bare video</title>
+</head>
+<body style="margin:0;padding:20px;font-family:Arial,sans-serif;">
+  <p style="text-align:center;font-weight:700;">TEST 2: bare video, no captions, no styling</p>
+  <video controls playsinline preload="auto" src="video-test.mp4?v=1" width="1080" height="1080" style="width:100%;height:auto;"></video>
+    <p id="diag" style="text-align:center;font-size:15px;font-weight:700;color:#0b4f7a;margin:10px 0 0;"></p>
+    <script>
+      // Test only: measures how long after the sound starts the first picture appears.
+      (function () {
+        var v = document.querySelector('video'), d = document.getElementById('diag');
+        var m = navigator.userAgent.match(/OS (\d+)_(\d+)/), s = navigator.userAgent.match(/Version\/([\d.]+)/);
+        var dev = (m ? 'iOS ' + m[1] + '.' + m[2] : '') + (s ? ' | Safari ' + s[1] : '');
+        d.textContent = dev + ' | press play';
+        var t0 = null, done = false;
+        v.addEventListener('playing', function () {
+          if (t0 !== null) return;
+          t0 = performance.now();
+          d.textContent = dev + ' | sound started, waiting for picture...';
+          if (v.requestVideoFrameCallback) {
+            v.requestVideoFrameCallback(function (now, meta) {
+              done = true;
+              d.textContent = dev + ' | picture started ' + Math.max(0, (now - t0) / 1000).toFixed(1) +
+                ' s after sound (at ' + meta.mediaTime.toFixed(1) + ' s of the video)';
+            });
+          } else { d.textContent = dev + ' | this phone cannot measure it'; }
+        });
+      })();
+    </script>
+</body>
+</html>
