@@ -15,7 +15,7 @@ A 65-second video introduction for nursing job applications.
 
 ## How it works
 
-GitHub Pages serves this repo as a website from the `main` branch. When someone opens the link, their browser loads `index.html`, which plays `video-resume.mp4` with `captions.vtt`. There's no other code, server, or database.
+GitHub Pages serves this repo as a website from the `main` branch. When someone opens the link, their browser loads `index.html`, which plays `video-resume.mp4` with `captions.vtt`. A few lines of script under the video switch the captions on when the page loads and when the video first plays, because phone browsers often ignore the caption "default" setting. There's no other code, server, or database.
 
 ## Updating it
 

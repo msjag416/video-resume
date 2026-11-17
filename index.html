@@ -118,6 +118,20 @@
       <track kind="captions" src="captions.vtt" srclang="en" label="English" default>
       Your browser can't play this video. <a href="video-resume.mp4">Download it here.</a>
     </video>
+    <script>
+      // Phones often ignore the "default" caption setting, so turn captions on here too.
+      (function () {
+        var v = document.querySelector('video');
+        function captionsOn() {
+          for (var i = 0; i < v.textTracks.length; i++) {
+            if (v.textTracks[i].kind === 'captions') v.textTracks[i].mode = 'showing';
+          }
+        }
+        captionsOn();
+        v.addEventListener('loadedmetadata', captionsOn);
+        v.addEventListener('play', captionsOn, { once: true });
+      })();
+    </script>
     <p class="hint">Captions are on. You can turn them off from the player's captions or menu button.</p>
 
     <h2>Licensure and certifications</h2>
