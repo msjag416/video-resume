@@ -10,12 +10,13 @@ A 65-second video introduction for nursing job applications.
 - `video-resume.mp4` is the video (square, 1080 x 1080, about 65 seconds, about 10 MB so it still loads fast on phones). It's saved with a restart point (keyframe) every second so the picture can start quickly. It was made with Kling AI Avatar Pro on KIE from my photo and my own voice recording.
 - `captions.vtt` is the caption file the player shows on top of the video. It was made from my recording with Whisper and checked by hand.
 - `poster.jpg` is my photo with the blue play button, shown on top of the player before the video plays.
+- `qr.png` is the QR code that opens this page, shown when someone taps "Show QR code" under the video.
 - `share.jpg` is the wider image used when the link is shared on LinkedIn, email or text.
 - `favicon.svg`, `favicon.ico` and `apple-touch-icon.png` are the blue "RN" icon for browser tabs and phone home screens.
 
 ## How it works
 
-GitHub Pages serves this repo as a website from the `main` branch. When someone opens the link, their browser loads `index.html`, which plays `video-resume.mp4` with `captions.vtt`. A few lines of script under the video switch the captions on when the page loads and when the video first plays, because phone browsers often ignore the caption "default" setting. Another short script handles the photo on top of the player: tapping it starts the video, and the photo is removed only once the moving picture is ready. There's no other code, server, or database.
+GitHub Pages serves this repo as a website from the `main` branch. When someone opens the link, their browser loads `index.html`, which plays `video-resume.mp4` with `captions.vtt`. A few lines of script under the video switch the captions on when the page loads and when the video first plays, because phone browsers often ignore the caption "default" setting. Another short script handles the photo on top of the player: tapping it starts the video, and the photo is removed only once the moving picture is ready. Under the video, a "Share this page" button opens the phone's share menu (or copies the link on a computer), and "Show QR code" opens the QR code. There's no other code, server, or database.
 
 ## Why the player is built this way (November 2026 iPhone fix)
 
